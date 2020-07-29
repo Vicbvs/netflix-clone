@@ -11,7 +11,7 @@ function Menu() {
         <img className="logo" src={logo} alt="Netflix Logo" />
       </Link>
       <Button as={Link} className="buttonLink" to="/cadastro/video">
-        Novo Video
+        Novo Vídeo
       </Button>
     </nav>
   );

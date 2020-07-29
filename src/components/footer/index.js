@@ -10,7 +10,7 @@ function Footer() {
       </a>
       <p>
         Orgulhosamente criado durante a{" "}
-        <a href="https://www.alura.com.br/">Imers„o React da Alura</a>
+        <a href="https://www.alura.com.br/">Imers√£o React da Alura</a>
       </p>
     </FooterBase>
   );
