@@ -25,17 +25,17 @@ function CadastroCategoria() {
   }
 
   useEffect(() => {
-    if (window.location.href.includes("localhost")) {
-      const URL = "http://localhost:8080/categorias";
-      fetch(URL).then(async (response) => {
-        if (response.ok) {
-          const resposta = await response.json();
-          setCategorias(resposta);
-          return;
-        }
-        throw new Error("Não foi possível buscar os dados");
-      });
-    }
+    const URL = window.location.hostname.includes("localhost")
+      ? "http://localhost:8080/categorias"
+      : "https://netflix-clone-react.herokuapp.com/categorias";
+    fetch(URL).then(async (response) => {
+      if (response.ok) {
+        const resposta = await response.json();
+        setCategorias(resposta);
+        return;
+      }
+      throw new Error("Não foi possível buscar os dados");
+    });
   }, []);
 
   return (
@@ -74,9 +74,12 @@ function CadastroCategoria() {
 
         <Button>Cadastrar</Button>
       </form>
+
+      {categorias.length === 0 && <div>Loading...</div>}
+
       <ul>
-        {categorias.map((categoria, index) => {
-          return <li key={`${categoria}${index}`}>{categoria.name}</li>;
+        {categorias.map((categoria) => {
+          return <li key={`${categoria.name}`}>{categoria.name}</li>;
         })}
       </ul>
 
